@@ -1,3 +1,4 @@
+// makefun-sticker-01 — copy entry.png to /output/entry.png
 import { copyFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,3 +9,4 @@ mkdirSync(outDir, { recursive: true });
 const dest = join(outDir, "entry.png");
 copyFileSync(join(here, "entry.png"), dest);
 console.log(`copied entry.png -> ${dest}`);
+// Deterministic: copies the bytes unchanged, no network, no randomness.
