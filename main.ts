@@ -3,10 +3,10 @@ import { copyFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const here = dirname(fileURLToPath(import.meta.url));
-const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
-mkdirSync(outDir, { recursive: true });
-const dest = join(outDir, "entry.png");
-copyFileSync(join(here, "entry.png"), dest);
-console.log(`copied entry.png -> ${dest}`);
+const baseDir = dirname(fileURLToPath(import.meta.url));
+const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+mkdirSync(outputDir, { recursive: true });
+const outputPath = join(outputDir, "entry.png");
+copyFileSync(join(baseDir, "entry.png"), outputPath);
+console.log(`copied entry.png -> ${outputPath}`);
 // Deterministic: copies the bytes unchanged, no network, no randomness.
